@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:stem_flutter/news.dart';
+import 'package:stem_flutter/products.dart';
+
+import 'news.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         // textTheme: TextTheme()
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      routes: {
+        '/': (_) => const MyHomePage(title: 'My App'),
+        '/news': (_) => const NewsPage(),
+        '/products': (_) => const ProductsPage(),
+      },
     );
   }
 }
@@ -33,12 +41,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  final _items = [
-    'https://images.uncyc.org/th/thumb/e/e1/%E0%B8%AD%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%A3%E0%B8%A2%E0%B9%8C%E0%B9%81%E0%B8%94%E0%B8%87.jpg/300px-%E0%B8%AD%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%A3%E0%B8%A2%E0%B9%8C%E0%B9%81%E0%B8%94%E0%B8%87.jpg',
-    'https://us-tuna-sounds-images.voicemod.net/0067c69e-7f37-458c-97f5-cd826ab94b82-1659163344679.jpg',
-    'https://storage-wp.thaipost.net/2022/11/1470111.jpg',
-    'https://pbs.twimg.com/media/EN0R_MsUEAAMLyM.jpg'
-  ];
 
   void _incrementCounter() {
     setState(() {
@@ -84,32 +86,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text('This is card'),
                 ),
               ),
-              SizedBox(
-                height: 200,
-                child: ListView.builder(
-                  itemCount: _items.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Card(
-                        child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CachedNetworkImage(
-                        imageUrl: _items[index],
-                      ),
-                    ));
-                  },
-                ),
-              ),
               ElevatedButton(
                   onPressed: () {
                     // setState(() {
                     //   _counter = _counter * 2;
                     // });
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const NewsPage(),
-                      ),
-                    );
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const NewsPage(),
+                    //     settings: const RouteSettings(arguments: '12345678'),
+                    //   ),
+                    // );
+                    Navigator.of(context).pushNamed('/news', arguments: '12345678');
                   },
                   style: ButtonStyle(
                     elevation: MaterialStateProperty.all(12),

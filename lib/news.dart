@@ -9,12 +9,26 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends State<NewsPage> {
+  String data = '';
+
   final _items = [
     'https://images.uncyc.org/th/thumb/e/e1/%E0%B8%AD%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%A3%E0%B8%A2%E0%B9%8C%E0%B9%81%E0%B8%94%E0%B8%87.jpg/300px-%E0%B8%AD%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%A3%E0%B8%A2%E0%B9%8C%E0%B9%81%E0%B8%94%E0%B8%87.jpg',
     'https://us-tuna-sounds-images.voicemod.net/0067c69e-7f37-458c-97f5-cd826ab94b82-1659163344679.jpg',
     'https://storage-wp.thaipost.net/2022/11/1470111.jpg',
     'https://pbs.twimg.com/media/EN0R_MsUEAAMLyM.jpg'
   ];
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final arguments = ModalRoute.of(context)?.settings.arguments;
+      setState(() {
+        data = '$arguments';
+      });
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +47,7 @@ class _NewsPageState extends State<NewsPage> {
           ));
         },
       ),
+      // body: Center(child: Text('$data')),
     );
   }
 }
