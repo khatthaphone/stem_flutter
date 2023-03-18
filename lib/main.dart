@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         // textTheme: TextTheme()
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: '/',
+      initialRoute: '/products',
       routes: {
         '/': (_) => const MyHomePage(title: 'My App'),
         '/news': (_) => const NewsPage(),

@@ -13,4 +13,13 @@ class DioClient {
     }
     return null;
   }
+
+  Future<ProductsModel?> searchProduct(String text) async {
+    final res = await _dio.get('/products/search?q=$text');
+    if (res.statusCode == 200) {
+      // return res.data;
+      return ProductsModel.fromJson(res.data);
+    }
+    return null;
+  }
 }

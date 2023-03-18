@@ -20,6 +20,7 @@ class _NewsPageState extends State<NewsPage> {
 
   @override
   void initState() {
+    
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final arguments = ModalRoute.of(context)?.settings.arguments;
       setState(() {
